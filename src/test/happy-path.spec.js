@@ -1,16 +1,13 @@
 const request = require('supertest');
 const app = require('../server/app');
 const nodemailer = require('nodemailer');
+const setup = require('./_setup');
 
 describe('send email', () => {
   let response; 
   
   beforeAll(async () => {
-    process.env.SMTP_USERNAME='foo@bar.com';
-    process.env.SMTP_PASSWORD='password';
-    process.env.SMTP_PORT=1;
-    process.env.SMTP_USE_SSL=true;
-    process.env.SMTP_HOST='smtp.foo.bar';
+    setup();
 
     response = await request(app)
       .post('/send')
@@ -20,7 +17,6 @@ describe('send email', () => {
         'text': 'Hey you',
         'html': '<p>some message for <strong>you</strong></p>'
       })
-      .set('Accept', 'application/json');
   });
 
   it('should respond with something', () => {
@@ -42,6 +38,7 @@ describe('send email', () => {
       "secure": "true",
     };
 
+    expect(nodemailer.createTransport.mock.calls.length).toBe(1);
     expect(nodemailer.createTransport).toHaveBeenCalledWith(expectedSmtpConfig);
   });
 
