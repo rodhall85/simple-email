@@ -3,21 +3,21 @@ const app = require('../server/app');
 const nodemailer = require('nodemailer');
 const setup = require('./_setup');
 
-describe('send email with invalid email address', () => {
+describe('send email with invalid html', () => {
   let response; 
   
-  ['bob','foo@bar','@foo.com','foo.com',1,true,[],'',' ',null].forEach(emailAddress => {
-    describe(`of '${emailAddress}'`, () => {
+  ['', ' ',1,true,[],null].forEach(html => {
+    describe(`of '${html}'`, () => {
       beforeAll(async () => {
         setup();    
 
         response = await request(app)
           .post('/send')
           .send({
-            'to': emailAddress,
+            'to': 'foo@bar.com',
             'subject': 'Hey you',
             'text': 'some message for you',
-            'html': '<p>some message for <strong>you</strong></p>'
+            'html': html
           });
       });
 

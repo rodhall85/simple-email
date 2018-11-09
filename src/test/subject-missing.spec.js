@@ -3,7 +3,7 @@ const app = require('../server/app');
 const nodemailer = require('nodemailer');
 const setup = require('./_setup');
 
-describe('send email with null email address', () => {
+describe('send email with missing subject', () => {
   let response; 
   
   beforeAll(async () => {
@@ -12,9 +12,8 @@ describe('send email with null email address', () => {
     response = await request(app)
       .post('/send')
       .send({
-        'to': null,
-        'subject': 'some message for you',
-        'text': 'Hey you',
+        'emailAddress': 'foo@bar.com',
+        'text': 'some message for you',
         'html': '<p>some message for <strong>you</strong></p>'
       });
   });

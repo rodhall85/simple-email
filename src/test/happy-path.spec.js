@@ -13,8 +13,8 @@ describe('send email', () => {
       .post('/send')
       .send({
         'to': 'foo@bar.com',
-        'subject': 'some message for you',
-        'text': 'Hey you',
+        'subject': 'Hey you',
+        'text': 'some message for you',
         'html': '<p>some message for <strong>you</strong></p>'
       })
   });
@@ -54,8 +54,8 @@ describe('send email', () => {
     const actualMessage = nodemailer.sendMailCalls[0];
     const expectedMessage = {
       'html': '<p>some message for <strong>you</strong></p>',
-      'subject': 'some message for you',
-      'text': 'Hey you',
+      'subject': 'Hey you',
+      'text': 'some message for you',
       'to': 'foo@bar.com',
     }
 
