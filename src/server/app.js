@@ -25,7 +25,6 @@ app.post('/send', (req, res) => {
     res.status(429).send({});
     return;
   }
-
   if (!validatePayload(req.body)) {
     res.status(400).send({});
     return;

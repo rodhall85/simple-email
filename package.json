@@ -4,6 +4,7 @@
   "description": "Simple email server",
   "main": "server.js",
   "scripts": {
+    "start": "node src/server/server.js",
     "test": "jest",
     "test-watch": "jest --watch"
   },
