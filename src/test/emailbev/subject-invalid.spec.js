@@ -1,7 +1,7 @@
 const request = require('supertest');
-const app = require('../server/app');
+const app = require('../../server/app');
 const nodemailer = require('nodemailer');
-const setup = require('./_setup');
+const setup = require('../_setup');
 
 describe('send email with invalid subject', () => {
   let response; 

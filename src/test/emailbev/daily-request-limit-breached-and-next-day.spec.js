@@ -1,7 +1,7 @@
 const request = require('supertest');
-const app = require('../server/app');
+const app = require('../../server/app');
 const nodemailer = require('nodemailer');
-const setup = require('./_setup');
+const setup = require('../_setup');
 
 describe.only('send email with daily limit reached on the previous day', () => {
   let response1, response2, response3; 

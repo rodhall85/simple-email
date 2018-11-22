@@ -1,9 +1,9 @@
 const request = require('supertest');
-const app = require('../server/app');
+const app = require('../../server/app');
 const nodemailer = require('nodemailer');
-const setup = require('./_setup');
+const setup = require('../_setup');
 
-describe('send email with missing html', () => {
+describe('send email with missing subject', () => {
   let response; 
   
   beforeAll(async () => {
@@ -12,8 +12,8 @@ describe('send email with missing html', () => {
     response = await request(app)
       .post('/emailbev')
       .send({
-        'subject': 'Hey you',
-        'text': 'some message for you'
+        'text': 'some message for you',
+        'html': '<p>some message for <strong>you</strong></p>'
       });
   });
 

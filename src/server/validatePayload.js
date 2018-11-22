@@ -1,3 +1,5 @@
+'use strict'
+
 function validatePayload(payload) {
   if (!stringIsValid(payload.subject)) {
     return false;

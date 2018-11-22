@@ -5,8 +5,11 @@ const validatePayload = require('./validatePayload');
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const security = require('./security')(app)
 
 app.use(bodyParser.json());
+security.hsts(security.hsts.oneYear, false, false)
+security.disablePoweredByHeader()
 
 let requests = {'date': new Date(Date.now()).toISOString().split('T')[0], 'count': 0};
 
