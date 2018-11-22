@@ -3,16 +3,15 @@ const app = require('../server/app');
 const nodemailer = require('nodemailer');
 const setup = require('./_setup');
 
-describe('send email', () => {
+describe('send email to bev', () => {
   let response; 
   
   beforeAll(async () => {
     setup();
 
     response = await request(app)
-      .post('/send')
+      .post('/emailbev')
       .send({
-        'to': 'foo@bar.com',
         'subject': 'Hey you',
         'text': 'some message for you',
         'html': '<p>some message for <strong>you</strong></p>'

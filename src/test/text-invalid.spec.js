@@ -12,9 +12,8 @@ describe('send email with invalid text', () => {
         setup();    
 
         response = await request(app)
-          .post('/send')
+          .post('/emailbev')
           .send({
-            'to': 'foo@bar.com',
             'subject': 'Hey you',
             'text': text,
             'html': '<p>some message for <strong>you</strong></p>'

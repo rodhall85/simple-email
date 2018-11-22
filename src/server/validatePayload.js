@@ -1,8 +1,4 @@
 function validatePayload(payload) {
-  if (!emailAddressIsValid(payload.to)) {
-    return false;
-  }
-
   if (!stringIsValid(payload.subject)) {
     return false;
   }
@@ -12,18 +8,6 @@ function validatePayload(payload) {
   }
 
   if (!stringIsValid(payload.html)) {
-    return false;
-  }
-
-  return true;
-}
-
-function emailAddressIsValid(emailAddress) {
-  if (!emailAddress || typeof emailAddress !== 'string' || emailAddress.trim() === '') {
-    return false;
-  }
-
-  if(!emailAddress.match(/^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/)) {
     return false;
   }
 

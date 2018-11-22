@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 let requests = {'date': new Date(Date.now()).toISOString().split('T')[0], 'count': 0};
 
-app.post('/send', (req, res) => {
+app.post('/emailbev', (req, res) => {
   const today = new Date(Date.now()).toISOString().split('T')[0];
 
   if (requests.date === today) {
@@ -29,8 +29,15 @@ app.post('/send', (req, res) => {
     res.status(400).send({});
     return;
   }
+  
+  const message = {
+    to: process.env.EMAIL_ADDRESS_BEV,
+    subject: req.body.subject,
+    text: req.body.text,
+    html: req.body.html
+  }
 
-  sendEmail(req.body);
+  sendEmail(message);
   res.status(200).send({});
 });
 

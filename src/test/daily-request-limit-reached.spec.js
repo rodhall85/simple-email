@@ -11,18 +11,16 @@ describe('send email with daily limit reached', () => {
     process.env.DAILY_REQUEST_LIMIT=1;
     
     response1 = await request(app)
-      .post('/send')
+      .post('/emailbev')
       .send({
-        'to': 'foo@bar.com',
         'subject': 'Hey you',
         'text': 'some message for you',
         'html': '<p>some message for <strong>you</strong></p>'
     });
     
     response2 = await request(app)
-      .post('/send')
+      .post('/emailbev')
       .send({
-        'to': 'foo@bar.com',
         'subject': 'Hey you',
         'text': 'some message for you',
         'html': '<p>some message for <strong>you</strong></p>'

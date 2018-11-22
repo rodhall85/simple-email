@@ -13,18 +13,16 @@ describe.only('send email with daily limit reached on the previous day', () => {
     global.Date.now = jest.fn(() => 1514764800000); // 2018-01-01T00:00:00.000
     
     response1 = await request(app)
-      .post('/send')
+      .post('/emailbev')
       .send({
-        'to': 'foo@bar.com',
         'subject': 'Hey you',
         'text': 'some message for you',
         'html': '<p>some message for <strong>you</strong></p>'
     });
     
     response2 = await request(app)
-      .post('/send')
+      .post('/emailbev')
       .send({
-        'to': 'foo@bar.com',
         'subject': 'Hey you',
         'text': 'some message for you',
         'html': '<p>some message for <strong>you</strong></p>'
@@ -33,9 +31,8 @@ describe.only('send email with daily limit reached on the previous day', () => {
     global.Date.now = jest.fn(() => 1514851200000); // 2018-01-02T00:00:00.000   
 
     response3 = await request(app)
-      .post('/send')
+      .post('/emailbev')
       .send({
-        'to': 'foo@bar.com',
         'subject': 'Hey you',
         'text': 'some message for you',
         'html': '<p>some message for <strong>you</strong></p>'

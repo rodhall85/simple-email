@@ -10,9 +10,8 @@ describe('send email with missing subject', () => {
     setup();    
 
     response = await request(app)
-      .post('/send')
+      .post('/emailbev')
       .send({
-        'emailAddress': 'foo@bar.com',
         'text': 'some message for you',
         'html': '<p>some message for <strong>you</strong></p>'
       });

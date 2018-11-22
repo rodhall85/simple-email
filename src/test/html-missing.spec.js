@@ -10,9 +10,8 @@ describe('send email with missing html', () => {
     setup();    
 
     response = await request(app)
-      .post('/send')
+      .post('/emailbev')
       .send({
-        'emailAddress': 'foo@bar.com',
         'subject': 'Hey you',
         'text': 'some message for you'
       });
